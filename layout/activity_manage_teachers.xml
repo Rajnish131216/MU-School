@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8fafc"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Manage Teachers"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etTeacherName"
+            android:hint="Enter Teacher Name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etTeacherEmail"
+            android:hint="Enter Teacher Email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etTeacherDepartment"
+            android:hint="Enter Department"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etTeacherClass"
+            android:hint="Enter Classes (e.g. 9A, 8B)"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnAddTeacher"
+            android:text="Add Teacher"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Loader -->
+        <FrameLayout
+            android:id="@+id/loaderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:visibility="gone">
+            <ImageView
+                android:id="@+id/imageLoader"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="Loading..." />
+        </FrameLayout>
+
+        <!-- Dynamic list -->
+        <LinearLayout
+            android:id="@+id/layoutTeachersList"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp" />
+    </LinearLayout>
+</ScrollView>

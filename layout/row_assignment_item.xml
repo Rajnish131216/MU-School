@@ -1,0 +1,50 @@
+<!-- res/layout/row_assignment_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#ffffff"
+    android:elevation="2dp"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvAssignmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assignment Title"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tvAssignmentMeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Uploaded • 2 days ago"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_marginTop="4dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnViewAssignment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="View"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnDownloadAssignment"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Download"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+</LinearLayout>

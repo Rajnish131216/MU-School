@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient"
+    android:padding="16dp"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:animateLayoutChanges="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header_gradient"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_person_24"
+                app:shapeAppearanceOverlay="@style/Avatar.Circular"
+                app:strokeWidth="2dp"
+                app:strokeColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Welcome, Admin"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
+                app:layout_constraintTop_toTopOf="parent"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/tvAdminName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Name: —"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/tvAdminEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Email: —"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:alpha="0.9"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
+                app:layout_constraintTop_toBottomOf="@id/tvAdminName"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/tvAdminRole"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Role: Admin"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:alpha="0.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
+                app:layout_constraintTop_toBottomOf="@id/tvAdminEmail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:columnCount="2"
+            android:clipToPadding="false"
+            app:useDefaultMargins="true">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardManageTeachers"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_manage_teachers">
+                    <ImageView
+                        android:src="@mipmap/students_foreground"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Manage Teachers" />
+
+                    <TextView
+                        android:text="Manage Teachers"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardManageStudents"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_manage_students">
+
+                    <ImageView
+                        android:src="@mipmap/students_foreground"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Manage Students" />
+
+                    <TextView
+                        android:text="Manage Students"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewResults"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_settings">
+
+                    <ImageView
+                        android:src="@drawable/results_foreground"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="View Results" />
+
+                    <TextView
+                        android:text="View Results"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardManageSubjects"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_manage_subjects">
+                    <ImageView
+                        android:src="@drawable/subject_foreground"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Manage Subjects" />
+
+                    <TextView
+                        android:text="Manage Subjects"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardManageClasses"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_manage_classes">
+
+                    <ImageView
+                        android:src="@mipmap/sclasses_foreground"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Manage Classes" />
+
+                    <TextView
+                        android:text="Manage Classes"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAnnouncements"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_post_announcements">
+
+                    <ImageView
+                        android:src="@drawable/baseline_campaign_24"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Announcements" />
+
+                    <TextView
+                        android:text="Announcements"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAdminProfile"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_profile">
+
+                    <ImageView
+                        android:src="@mipmap/profilepicture_foreground"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Profile" />
+
+                    <TextView
+                        android:text="Profile Picture Upload"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSettings"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_settings">
+
+                    <ImageView
+                        android:src="@drawable/setting_foreground"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Settings" />
+
+                    <TextView
+                        android:text="Settings"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLogout"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_logout">
+
+                    <ImageView
+                        android:src="@drawable/baseline_logout_24"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Logout" />
+
+                    <TextView
+                        android:text="Logout"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.gridlayout.widget.GridLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#f0f4f8"
+    android:contentDescription="Upload study material screen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📤 Upload Study Material"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E86C1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:accessibilityHeading="true" />
+
+        <EditText
+            android:id="@+id/etMaterialTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter title"
+            android:importantForAutofill="yes"
+            android:padding="12dp"
+            android:backgroundTint="#2E86C1"
+            android:contentDescription="Material title" />
+
+        <Spinner
+            android:id="@+id/spinnerClass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="Select class" />
+
+        <Spinner
+            android:id="@+id/spinnerBatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="Select batch" />
+
+        <!-- New Drive Link Input -->
+        <EditText
+            android:id="@+id/etDriveLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Or paste public Drive link"
+            android:layout_marginTop="16dp"
+            android:inputType="textUri"
+            android:backgroundTint="#2E86C1"
+            android:padding="12dp"
+            android:contentDescription="Paste Google Drive link if available" />
+
+        <TextView
+            android:id="@+id/tvOr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textStyle="bold"
+            android:textColor="#666"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnChooseMaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📁 Choose PDF"
+            android:layout_marginTop="12dp"
+            android:contentDescription="Choose PDF to upload" />
+
+        <TextView
+            android:id="@+id/tvSelectedMaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#333"
+            android:layout_marginTop="8dp"
+            android:contentDescription="Selected file name will appear here" />
+
+        <Button
+            android:id="@+id/btnUploadMaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⬆ Upload"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#2E86C1"
+            android:textColor="#fff"
+            android:enabled="true"
+            android:contentDescription="Upload selected PDF or link" />
+    </LinearLayout>
+</ScrollView>
