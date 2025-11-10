@@ -1,0 +1,22 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow Layer -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#22000000" />
+        </shape>
+    </item>
+
+    <!-- Main Gradient Circle -->
+    <item android:top="2dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="linear"
+                android:startColor="#4A90E2"
+                android:endColor="#007AFF"
+                android:angle="45" />
+            <size
+                android:width="100dp"
+                android:height="100dp" />
+        </shape>
+    </item>
+</layer-list>
