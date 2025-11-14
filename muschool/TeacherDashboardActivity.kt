@@ -2,6 +2,9 @@ package com.example.muschool
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ContextThemeWrapper
+import android.view.MenuItem
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.imageview.ShapeableImageView
@@ -22,7 +25,6 @@ class TeacherDashboardActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private var userRef: DatabaseReference? = null
-    private var teacherRef: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +39,16 @@ class TeacherDashboardActivity : AppCompatActivity() {
         imgAvatar = findViewById(R.id.imgAvatar)
 
         bindCardClicks()
-
-        // Load teacher header from Firebase (name, dept/classes, photoUrl)
         loadTeacherHeader()
+
+        // 🔹 Profile image click → popup (Profile + Logout)
+        imgAvatar.setOnClickListener {
+            it.performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY)
+            showProfileMenu()
+        }
     }
 
     private fun bindCardClicks() {
-        findViewById<CardView>(R.id.cardProfile).setOnClickListener {
-            startActivity(Intent(this, TeacherProfile::class.java))
-        }
         findViewById<CardView>(R.id.cardManageStudents).setOnClickListener {
             startActivity(Intent(this, ManageStudentsActivity::class.java))
         }
@@ -58,7 +61,6 @@ class TeacherDashboardActivity : AppCompatActivity() {
         findViewById<CardView>(R.id.cardViewResults).setOnClickListener {
             startActivity(Intent(this, ViewResultsActivity::class.java))
         }
-
         findViewById<CardView>(R.id.cardCreateTimetable).setOnClickListener {
             startActivity(Intent(this, CreateTimetableActivity::class.java))
         }
@@ -77,11 +79,40 @@ class TeacherDashboardActivity : AppCompatActivity() {
         findViewById<CardView>(R.id.cardSettings).setOnClickListener {
             startActivity(Intent(this, TeacherSetting::class.java))
         }
-        findViewById<CardView>(R.id.cardLogout).setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this, UsernameLoginActivity::class.java))
-            finish()
+    }
+
+    // 🔹 Popup menu for Profile + Logout
+    private fun showProfileMenu() {
+        val wrapper = ContextThemeWrapper(this, R.style.CustomPopupMenuStyle)
+        val popup = PopupMenu(wrapper, imgAvatar)
+        popup.menuInflater.inflate(R.menu.menu_profile_popup, popup.menu)
+
+        for (i in 0 until popup.menu.size()) {
+            val item = popup.menu.getItem(i)
+            val icon = item.icon
+            icon?.setTint(getColor(android.R.color.white))
+            item.icon = icon
         }
+
+        popup.setOnMenuItemClickListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.menu_view_profile -> {
+                    startActivity(Intent(this, TeacherProfile::class.java))
+                    true
+                }
+                R.id.menu_logout -> {
+                    auth.signOut()
+                    Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, UsernameLoginActivity::class.java))
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popup.setForceShowIcon(true)
+        popup.show()
     }
 
     private fun loadTeacherHeader() {
@@ -104,6 +135,7 @@ class TeacherDashboardActivity : AppCompatActivity() {
                 tvTeacherName.text = "Name: ${if (name.isNotBlank()) name else "—"}"
                 tvTeacherDept.text = "Department: ${if (dept.isNotBlank()) dept else "—"}"
                 tvTeacherClasses.text = "Classes: ${if (classes.isNotBlank()) classes else "—"}"
+
                 loadAvatar(photoUrl)
             }
 
@@ -120,6 +152,7 @@ class TeacherDashboardActivity : AppCompatActivity() {
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .placeholder(R.drawable.baseline_person_24)
                 .error(R.drawable.baseline_person_24)
+                .circleCrop()
                 .into(imgAvatar)
         } else {
             imgAvatar.setImageResource(R.drawable.baseline_person_24)
