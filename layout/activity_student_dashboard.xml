@@ -16,6 +16,7 @@
         android:gravity="center_horizontal"
         android:animateLayoutChanges="true">
 
+        <!-- 🔹 Header -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
@@ -27,16 +28,17 @@
 
             <ImageView
                 android:id="@+id/imgAvatar"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:background="@drawable/bg_avatar_circle_white"
-                android:contentDescription="Profile photo"
                 android:src="@drawable/baseline_person_24"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="Profile photo"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="8dp" />
 
             <TextView
                 android:id="@+id/tvWelcome"
@@ -45,27 +47,23 @@
                 android:text="Welcome, Student"
                 android:textStyle="bold"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imgAvatar"
-                app:layout_constraintTop_toTopOf="parent"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvStudentName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Name: —"
-                android:textStyle="bold"
                 android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/white"
-                android:layout_marginTop="6dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
                 app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar" />
 
             <TextView
                 android:id="@+id/tvStudentClass"
@@ -73,14 +71,12 @@
                 android:layout_height="wrap_content"
                 android:text="Class: —"
                 android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/white"
                 android:alpha="0.9"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
                 app:layout_constraintTop_toBottomOf="@id/tvStudentName"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar" />
 
             <TextView
                 android:id="@+id/tvStudentBatch"
@@ -88,64 +84,26 @@
                 android:layout_height="wrap_content"
                 android:text="Batch: —"
                 android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/white"
                 android:alpha="0.9"
+                app:layout_constraintTop_toBottomOf="@id/tvStudentClass"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imgAvatar"
-                app:layout_constraintTop_toBottomOf="@id/tvStudentClass"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- 🔹 Dashboard Grid -->
         <androidx.gridlayout.widget.GridLayout
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:columnCount="2"
-            app:rowCount="4"
-            app:alignmentMode="alignMargins"
             app:useDefaultMargins="true"
-            android:clipToPadding="false"
             android:paddingBottom="8dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardProfile"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                app:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_card_profile">
-
-                    <ImageView
-                        android:src="@drawable/baseline_person_24"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="Profile"
-                        app:tint="@android:color/white" />
-
-                    <TextView
-                        android:text="Profile"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/white"
-                        android:layout_marginTop="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+            <!-- Timetable -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardTimetable"
                 android:layout_width="0dp"
@@ -179,10 +137,11 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Assignments -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardAssignments"
                 android:layout_width="0dp"
@@ -216,10 +175,11 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Results -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardResults"
                 android:layout_width="0dp"
@@ -253,10 +213,11 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Attendance -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardAttendance"
                 android:layout_width="0dp"
@@ -290,10 +251,11 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Study Materials -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardMaterials"
                 android:layout_width="0dp"
@@ -327,10 +289,11 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Announcements -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardAnnouncements"
                 android:layout_width="0dp"
@@ -364,10 +327,11 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Settings -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardSettings"
                 android:layout_width="0dp"
@@ -401,44 +365,7 @@
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardLogout"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                app:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_card_logout">
-
-                    <ImageView
-                        android:src="@drawable/baseline_logout_24"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="Logout"
-                        app:tint="@android:color/white" />
-
-                    <TextView
-                        android:text="Logout"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/white"
-                        android:layout_marginTop="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

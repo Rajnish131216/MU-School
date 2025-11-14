@@ -16,6 +16,7 @@
         android:gravity="center_horizontal"
         android:animateLayoutChanges="true">
 
+        <!-- Header -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
@@ -31,9 +32,9 @@
                 android:layout_height="72dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/baseline_person_24"
-                app:shapeAppearanceOverlay="@style/Avatar.Circular"
-                app:strokeWidth="2dp"
-                app:strokeColor="@android:color/white"
+                android:contentDescription="Profile picture, tap to open menu"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
@@ -48,9 +49,7 @@
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imgAvatar"
-                app:layout_constraintTop_toTopOf="parent"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAdminName"
@@ -60,12 +59,9 @@
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"
-                android:layout_marginTop="6dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
                 app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar" />
 
             <TextView
                 android:id="@+id/tvAdminEmail"
@@ -75,12 +71,9 @@
                 android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:alpha="0.9"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imgAvatar"
                 app:layout_constraintTop_toBottomOf="@id/tvAdminName"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgAvatar" />
 
             <TextView
                 android:id="@+id/tvAdminRole"
@@ -90,21 +83,20 @@
                 android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:alpha="0.9"
+                app:layout_constraintTop_toBottomOf="@id/tvAdminEmail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/imgAvatar"
-                app:layout_constraintTop_toBottomOf="@id/tvAdminEmail"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:ellipsize="end"
-                android:maxLines="1" />
+                app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- Grid Layout (Profile & Logout removed) -->
         <androidx.gridlayout.widget.GridLayout
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:columnCount="2"
-            android:clipToPadding="false"
-            app:useDefaultMargins="true">
+            app:useDefaultMargins="true"
+            android:clipToPadding="false">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardManageTeachers"
@@ -165,6 +157,39 @@
 
                     <TextView
                         android:text="Manage Students"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAssignTeacherClass"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_columnWeight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_manage_classes">
+
+                    <ImageView
+                        android:src="@mipmap/sclasses_foreground"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:tint="@android:color/white"
+                        android:contentDescription="Assign  Class" />
+
+                    <TextView
+                        android:text="Assign  Class"
                         android:textSize="16sp"
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"
@@ -368,40 +393,6 @@
 
                     <TextView
                         android:text="Settings"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/white"
-                        android:layout_marginTop="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardLogout"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                app:layout_columnWeight="1"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="2dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_card_logout">
-
-                    <ImageView
-                        android:src="@drawable/baseline_logout_24"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:tint="@android:color/white"
-                        android:contentDescription="Logout" />
-
-                    <TextView
-                        android:text="Logout"
                         android:textSize="16sp"
                         android:textColor="@android:color/white"
                         android:layout_marginTop="8dp"

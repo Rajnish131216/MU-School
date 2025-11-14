@@ -1,80 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bg_main_gradient"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:clipToPadding="false"
+    android:scrollbars="none">
 
-    <!-- 🔹 Title -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="📊 View Class Results (in %)"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
-
-    <!-- 🔹 Select Class -->
-    <Spinner
-        android:id="@+id/spClass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_bg"
-        android:padding="12dp"
-        android:layout_marginBottom="12dp" />
-
-    <!-- 🔹 Select Batch -->
-    <Spinner
-        android:id="@+id/spBatch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_bg"
-        android:padding="12dp"
-        android:layout_marginBottom="12dp" />
-
-    <!-- 🔹 Load Buttons -->
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:animateLayoutChanges="true">
 
-        <Button
-            android:id="@+id/btnLoadResults"
-            android:layout_width="0dp"
+        <!-- 🏫 Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Load Class Results"
+            android:text="📊 View Class Results"
             android:textColor="@android:color/white"
-            android:layout_marginEnd="8dp" />
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center" />
 
-        <Button
-            android:id="@+id/btnLoadAllResults"
-            android:layout_width="0dp"
+        <!-- 🔽 Class Spinner -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Load All Results"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
+            android:text="Select Class"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="6dp" />
 
-    <!-- 🔹 Scrollable Results Section -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
+        <Spinner
+            android:id="@+id/spClass"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="8dp"
+            android:spinnerMode="dropdown" />
 
+        <!-- 🔽 Batch Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Batch"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <Spinner
+            android:id="@+id/spBatch"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="8dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- 🔽 Exam Type Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Exam Type"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <Spinner
+            android:id="@+id/spExamType"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="8dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- 🔘 Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnLoadResults"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📂 Load Results"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="8dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnLoadAllResults"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📚 Load All"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 🧾 Generate PDF Button -->
+        <Button
+            android:id="@+id/btnGeneratePDF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📄 Generate PDF Report"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:elevation="4dp" />
+
+        <!-- 📊 Generate Excel Button -->
+        <Button
+            android:id="@+id/btnGenerateExcel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📊 Generate Excel Report"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:elevation="4dp" />
+
+        <!-- 🧍 Results Display Container -->
         <LinearLayout
             android:id="@+id/resultsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp" />
-    </ScrollView>
+            android:layout_marginTop="24dp"
+            android:divider="?android:attr/dividerVertical"
+            android:showDividers="none" />
 
-</LinearLayout>
+        <!-- 🌀 Footer -->
+        <TextView
+            android:id="@+id/tvFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MU School • Result Analytics"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="28dp"
+            android:layout_gravity="center"
+            android:alpha="0.8" />
+
+    </LinearLayout>
+</ScrollView>
